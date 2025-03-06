@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.dev/svgjs" width="64" height="64"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Background Circle -->
+  <circle cx="32" cy="32" r="30" fill="#222222"></circle>
+  
+  <!-- "A" Letter -->
+  <path d="M32 12 L44 48 L38 48 L35 40 L29 40 L26 48 L20 48 L32 12 Z" fill="#FFD700"></path>
+  
+  <!-- Crossbar of the "A" -->
+  <path d="M30 34 L34 34 L32 28 L30 34 Z" fill="#222222"></path>
+  
+  <!-- Quotation Marks - now in the same gold color as the "A" -->
+  <path d="M14 22 Q11 22 11 25 L11 29 Q11 32 14 32 L16 32 Q17 32 18 31 L18 36 L22 32 L22 26 Q22 22 18 22 Z" fill="#FFD700"></path>
+  <path d="M48 18 L52 18 L52 14 Q52 12 50 12 L48 12 Q46 12 46 14 L46 16 Q46 18 48 18 Z" fill="#FFD700"></path>
+</svg><style>@media (prefers-color-scheme: light) { :root { filter: none; } }
+@media (prefers-color-scheme: dark) { :root { filter: none; } }
+</style></svg>
