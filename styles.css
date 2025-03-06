@@ -9,7 +9,10 @@
   --accent-color: #ffd700;
   --card-bg: #fff;
   --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-hover: rgba(0, 0, 0, 0.15);
   --transition-speed: 0.3s;
+  --border-radius: 8px;
+  --hover-transform: translateY(-5px);
 }
 
 /* Reset & Base Styles */
@@ -53,7 +56,7 @@ a {
   text-decoration: none;
 }
 
-/* Layout & Structure */
+/* Layout */
 .container {
   width: 85%;
   max-width: 1200px;
@@ -69,20 +72,21 @@ main {
   padding: 0 20px;
 }
 
-section {
+/* Common Components */
+section, .support-content, .contact-method {
   padding: 40px;
   margin: 30px 0;
   background-color: var(--card-bg);
-  border-radius: 8px;
-  box-shadow: 0 0 20px var(--shadow-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 15px var(--shadow-color);
   transition: transform var(--transition-speed), box-shadow var(--transition-speed), opacity var(--transition-speed);
   opacity: 1;
   will-change: transform, box-shadow, opacity;
 }
 
-section:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+section:hover, .support-content:hover, .contact-method:hover {
+  transform: var(--hover-transform);
+  box-shadow: 0 8px 20px var(--shadow-hover);
 }
 
 section h2 {
@@ -101,7 +105,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px var(--shadow-color);
 }
 
 .date {
@@ -139,7 +143,7 @@ nav ul li a {
   color: var(--header-text);
   font-weight: 500;
   padding: 5px 10px;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   font-family: var(--heading-font);
   font-size: 0.95em;
   letter-spacing: 0.02em;
@@ -154,7 +158,7 @@ nav ul li a:hover {
 .home {
   text-align: center;
   padding: 60px 40px;
-  background: linear-gradient(to bottom, var(--card-bg), #f9f9f9);
+  background-color: var(--card-bg);
 }
 
 .home h2 {
@@ -182,7 +186,7 @@ nav ul li a:hover {
   margin-bottom: 0;
 }
 
-/* Blog Section - Empty State */
+/* Blog Section */
 .empty-state {
   text-align: center;
   padding: 40px 0;
@@ -192,7 +196,7 @@ nav ul li a:hover {
 .empty-state i {
   font-size: 3em;
   margin-bottom: 15px;
-  color: #ddd;
+  color: var(--accent-color);
 }
 
 .empty-state p {
@@ -208,7 +212,6 @@ nav ul li a:hover {
 /* Support Section */
 .support {
   text-align: center;
-  background-color: var(--card-bg);
 }
 
 .support > p {
@@ -220,19 +223,6 @@ nav ul li a:hover {
 .support-container {
   margin: 40px auto;
   max-width: 650px;
-}
-
-.support-content {
-  background-color: white;
-  border-radius: 12px;
-  padding: 40px;
-  box-shadow: 0 5px 30px rgba(0,0,0,0.1);
-  transition: transform var(--transition-speed);
-  will-change: transform;
-}
-
-.support-content:hover {
-  transform: translateY(-8px);
 }
 
 .coffee-icon {
@@ -250,11 +240,10 @@ nav ul li a:hover {
   color: #666;
   margin-bottom: 30px;
   max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto 30px;
 }
 
-/* Coffee buttons and tiers */
+/* Coffee buttons */
 .coffee-tiers {
   display: flex;
   flex-wrap: wrap;
@@ -270,16 +259,18 @@ nav ul li a:hover {
   justify-content: center;
   background-color: var(--accent-color);
   color: #222;
-  border-radius: 10px;
+  border-radius: var(--border-radius);
   padding: 15px;
   width: 140px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 15px var(--shadow-color);
   font-family: var(--heading-font);
+  transition: all var(--transition-speed);
 }
 
 .coffee-btn:hover {
-  transform: scale(1.05);
+  transform: translateY(-3px);
   background-color: #e6c200;
+  box-shadow: 0 6px 15px var(--shadow-hover);
 }
 
 .coffee-amount {
@@ -298,21 +289,23 @@ nav ul li a:hover {
 }
 
 /* Support links */
-.support-link {
+.support-link, .back-button {
   display: inline-flex;
   align-items: center;
   color: var(--text-color);
   font-weight: 600;
   padding: 10px 15px;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
   background-color: #f8f8f8;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 15px var(--shadow-color);
   font-family: var(--heading-font);
+  transition: all var(--transition-speed);
 }
 
-.support-link:hover {
+.support-link:hover, .back-button:hover {
   background-color: #f0f0f0;
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px var(--shadow-hover);
 }
 
 .support-link i {
@@ -322,6 +315,10 @@ nav ul li a:hover {
 
 .support-link:hover i {
   transform: translateX(5px);
+}
+
+.back-button i {
+  margin-right: 10px;
 }
 
 /* Contact Section */
@@ -342,20 +339,10 @@ nav ul li a:hover {
   flex: 1;
   min-width: 250px;
   max-width: 350px;
-  background-color: white;
   padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-  transition: all var(--transition-speed) ease;
   display: flex;
   flex-direction: column;
   align-items: center;
-  will-change: transform, box-shadow;
-}
-
-.contact-method:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.12);
 }
 
 .contact-icon {
@@ -450,27 +437,6 @@ nav ul li a:hover {
   justify-content: center;
 }
 
-.back-button {
-  display: inline-flex;
-  align-items: center;
-  color: var(--text-color);
-  font-weight: 600;
-  padding: 10px 20px;
-  border-radius: 8px;
-  background-color: #f0f0f0;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  font-family: var(--heading-font);
-}
-
-.back-button:hover {
-  background-color: #e6e6e6;
-  transform: translateY(-2px);
-}
-
-.back-button i {
-  margin-right: 10px;
-}
-
 /* Footer */
 footer {
   background-color: var(--header-bg);
@@ -521,28 +487,17 @@ footer p {
     margin: 0 10px 5px;
   }
   
-  section {
+  section, .support-content, .contact-method {
     padding: 30px 20px;
+    box-shadow: 0 3px 8px var(--shadow-color);
   }
   
-  section:hover,
-  .support-content:hover,
-  .contact-method:hover {
+  section:hover, .support-content:hover, .contact-method:hover {
     transform: translateY(-3px);
-  }
-  
-  section,
-  .support-content,
-  .contact-method {
-    box-shadow: 0 3px 8px rgba(0,0,0,0.08);
   }
   
   .home h2 {
     font-size: 2em;
-  }
-  
-  .support-content {
-    padding: 30px 20px;
   }
   
   .coffee-tiers {
