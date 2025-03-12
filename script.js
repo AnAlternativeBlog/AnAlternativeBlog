@@ -1,6 +1,8 @@
+// Cache DOM elements to improve performance
+let dateElement, termsSection, header, footer;
+
 // Displays the current date in format "Sunday, March 2nd, 2025"
 function displayDate() {
-    const dateElement = document.getElementById("current-date");
     if (!dateElement) return;
     
     const today = new Date();
@@ -12,10 +14,17 @@ function displayDate() {
     else if (day % 10 === 2 && day !== 12) suffix = "nd";
     else if (day % 10 === 3 && day !== 13) suffix = "rd";
     
-    // Format date using Intl.DateTimeFormat for better performance
-    const weekday = new Intl.DateTimeFormat('en-US', { weekday: 'long' }).format(today);
-    const month = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(today);
-    const year = new Intl.DateTimeFormat('en-US', { year: 'numeric' }).format(today);
+    // Format date using Intl.DateTimeFormat for better performance and localization
+    const formatter = new Intl.DateTimeFormat('en-US', { 
+        weekday: 'long',
+        month: 'long',
+        year: 'numeric'
+    });
+    
+    const parts = formatter.formatToParts(today);
+    const weekday = parts.find(part => part.type === 'weekday').value;
+    const month = parts.find(part => part.type === 'month').value;
+    const year = parts.find(part => part.type === 'year').value;
     
     dateElement.textContent = `${weekday}, ${month} ${day}${suffix}, ${year}`;
 }
@@ -23,16 +32,22 @@ function displayDate() {
 // Reset to homepage - show all sections except terms
 function resetToHome() {
     window.scrollTo({ top: 0, behavior: 'auto' });
-    history.pushState("", document.title, window.location.pathname);
+    history.pushState("", document.title, window.location.pathname + "#home");
     
     const sections = document.querySelectorAll("section");
-    const termsSection = document.getElementById("terms");
+    
+    if (!termsSection) {
+        termsSection = document.getElementById("terms");
+    }
     
     // Show all sections except terms
     sections.forEach(section => {
         if (section !== termsSection) {
             section.style.display = "block";
-            setTimeout(() => { section.style.opacity = "1"; }, 10);
+            // Use requestAnimationFrame for better performance
+            requestAnimationFrame(() => { 
+                section.style.opacity = "1";
+            });
         } else {
             section.style.opacity = "0";
             section.style.display = "none";
@@ -58,18 +73,47 @@ function showSection(sectionId) {
     
     targetSection.style.display = "block";
     
-    setTimeout(() => {
+    // Use requestAnimationFrame for smoother animations
+    requestAnimationFrame(() => {
         targetSection.style.opacity = "1";
         history.pushState(null, null, `#${sectionId}`);
-    }, 10);
+    });
+}
+
+// Handle navigation clicks with event delegation
+function handleNavigation(e) {
+    // Handle title click
+    if (e.target.classList.contains('blog-title') || e.target.closest('.blog-title')) {
+        e.preventDefault();
+        resetToHome();
+        return;
+    }
+    
+    // Handle navigation links
+    const navLink = e.target.closest('nav a');
+    if (navLink) {
+        e.preventDefault();
+        const section = navLink.getAttribute('data-section');
+        section === 'home' ? resetToHome() : showSection(section);
+    }
+}
+
+// Handle footer terms link click
+function handleFooterClick(e) {
+    const termsLink = e.target.closest('.terms-link');
+    if (termsLink) {
+        e.preventDefault();
+        showSection(termsLink.getAttribute('data-section'));
+    }
 }
 
 // Initialize page on document load
 document.addEventListener('DOMContentLoaded', function() {
     // Cache DOM elements
-    const termsSection = document.getElementById("terms");
-    const header = document.querySelector('header');
-    const footer = document.querySelector('footer');
+    dateElement = document.getElementById("current-date");
+    termsSection = document.getElementById("terms");
+    header = document.querySelector('header');
+    footer = document.querySelector('footer');
     
     // Hide terms section initially
     if (termsSection) {
@@ -78,30 +122,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Set up event delegation for navigation
-    header.addEventListener('click', function(e) {
-        // Handle title click
-        if (e.target.classList.contains('blog-title') || e.target.closest('.blog-title')) {
-            resetToHome();
-            return;
-        }
-        
-        // Handle navigation links
-        const navLink = e.target.closest('nav a');
-        if (navLink) {
-            e.preventDefault();
-            const section = navLink.getAttribute('data-section');
-            section === 'home' ? resetToHome() : showSection(section);
-        }
-    });
+    if (header) {
+        header.addEventListener('click', handleNavigation);
+    }
     
     // Terms link in footer
-    footer.addEventListener('click', function(e) {
-        const termsLink = e.target.closest('.terms-link');
-        if (termsLink) {
-            e.preventDefault();
-            showSection(termsLink.getAttribute('data-section'));
-        }
-    });
+    if (footer) {
+        footer.addEventListener('click', handleFooterClick);
+    }
     
     // Initialize based on URL hash
     if (window.location.hash) {
@@ -110,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         // Show all sections except terms by default
         document.querySelectorAll('section').forEach(section => {
-            if (section.id !== "terms") {
+            if (section && section.id !== "terms") {
                 section.style.opacity = "1";
                 section.style.display = "block";
             }
