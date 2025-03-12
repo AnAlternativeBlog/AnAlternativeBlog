@@ -24,7 +24,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
@@ -39,11 +39,11 @@
             <h1 class="blog-title">An Alternative Blog</h1>
             <nav>
                 <ul>
-                    <li><a href="#" data-section="home" aria-label="Home"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="#" data-section="about" aria-label="About"><i class="fas fa-user"></i> About</a></li>
-                    <li><a href="#" data-section="blog" aria-label="Blog"><i class="fas fa-pen"></i> Blog</a></li>
-                    <li><a href="#" data-section="support" aria-label="Support"><i class="fas fa-heart"></i> Support</a></li>
-                    <li><a href="#" data-section="contact" aria-label="Contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                    <li><a href="#home" data-section="home" aria-label="Home"><i class="fas fa-home" aria-hidden="true"></i> <span>Home</span></a></li>
+                    <li><a href="#about" data-section="about" aria-label="About"><i class="fas fa-user" aria-hidden="true"></i> <span>About</span></a></li>
+                    <li><a href="#blog" data-section="blog" aria-label="Blog"><i class="fas fa-pen" aria-hidden="true"></i> <span>Blog</span></a></li>
+                    <li><a href="#support" data-section="support" aria-label="Support"><i class="fas fa-heart" aria-hidden="true"></i> <span>Support</span></a></li>
+                    <li><a href="#contact" data-section="contact" aria-label="Contact"><i class="fas fa-envelope" aria-hidden="true"></i> <span>Contact</span></a></li>
                 </ul>
             </nav>
         </div>
@@ -65,7 +65,7 @@
         <section id="blog" class="blog">
             <h2>My Blog</h2>
             <div class="empty-state">
-                <i class="fas fa-pen-fancy"></i>
+                <i class="fas fa-pen-fancy" aria-hidden="true"></i>
                 <p>Blog posts coming soon!</p>
                 <p class="subtitle">Check back later for thoughtful articles and insights.</p>
             </div>
@@ -77,29 +77,29 @@
             
             <div class="support-container">
                 <div class="support-content">
-                    <div class="coffee-icon"><i class="fas fa-coffee"></i></div>
+                    <div class="coffee-icon"><i class="fas fa-coffee" aria-hidden="true"></i></div>
                     <h3>Buy Me A Coffee</h3>
                     <p>Your support means the world to me and helps keep this blog running. Choose an option below or customise your amount.</p>
                     
                     <div class="coffee-tiers">
-                        <a href="https://buymeacoffee.com/c.mason" class="coffee-btn">
+                        <a href="https://buymeacoffee.com/c.mason" class="coffee-btn" aria-label="Donate 1 coffee - £1">
                             <span class="coffee-amount">1 Coffee</span>
                             <span class="coffee-price">£1</span>
                         </a>
-                        <a href="https://buymeacoffee.com/c.mason" class="coffee-btn">
+                        <a href="https://buymeacoffee.com/c.mason" class="coffee-btn" aria-label="Donate 3 coffees - £3">
                             <span class="coffee-amount">3 Coffees</span>
                             <span class="coffee-price">£3</span>
                         </a>
-                        <a href="https://buymeacoffee.com/c.mason" class="coffee-btn">
+                        <a href="https://buymeacoffee.com/c.mason" class="coffee-btn" aria-label="Donate 5 coffees - £5">
                             <span class="coffee-amount">5 Coffees</span>
                             <span class="coffee-price">£5</span>
                         </a>
                     </div>
                     
                     <div class="custom-coffee">
-                        <a href="https://buymeacoffee.com/c.mason" class="support-link">
+                        <a href="https://buymeacoffee.com/c.mason" class="support-link" aria-label="Choose your own donation amount">
                             <span>Choose your own amount</span>
-                            <i class="fas fa-arrow-right"></i>
+                            <i class="fas fa-arrow-right" aria-hidden="true"></i>
                         </a>
                     </div>
                 </div>
@@ -112,14 +112,14 @@
             
             <div class="contact-content">
                 <div class="contact-method">
-                    <i class="fas fa-envelope contact-icon"></i>
+                    <i class="fas fa-envelope contact-icon" aria-hidden="true"></i>
                     <h3>Email</h3>
                     <p>Send me a message directly to my inbox. I aim to respond within 48 hours.</p>
                     <a href="mailto:charlie.mason@btinternet.com">charlie.mason@btinternet.com</a>
                 </div>
                 
                 <div class="contact-method">
-                    <i class="fab fa-linkedin contact-icon"></i>
+                    <i class="fab fa-linkedin contact-icon" aria-hidden="true"></i>
                     <h3>LinkedIn</h3>
                     <p>Connect with me professionally or send a message through LinkedIn.</p>
                     <a href="https://www.linkedin.com/in/charles-w-mason">linkedin.com/in/charles-w-mason</a>
@@ -164,14 +164,14 @@
             </div>
             
             <div class="terms-navigation">
-                <a href="#" class="back-button" onclick="resetToHome(); return false;"><i class="fas fa-arrow-left"></i> Back to Home</a>
+                <a href="#home" class="back-button" onclick="resetToHome(); return false;"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Home</a>
             </div>
         </section>
     </main>
 
     <footer>
         <p>&copy; 2025 An Alternative Blog. All rights reserved.</p>
-        <a href="#" data-section="terms" class="terms-link">Terms of Service</a>
+        <a href="#terms" data-section="terms" class="terms-link">Terms of Service</a>
     </footer>
 </body>
 </html>
