@@ -12,24 +12,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>An Alternative Blog</title>
+    <!-- Meta description for SEO -->
+    <meta name="description" content="An Alternative Blog - Sharing thoughts and opinions on various topics by Charles Mason, a postgraduate law student at the University of Warwick.">
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest.JSON" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest.JSON">
     <!-- iOS Web App Meta Tags -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="An Alternative Blog">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Preload critical assets -->
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" as="style">
     <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <meta name="description" content="An Alternative Blog - Sharing thoughts and opinions on various topics">
-    <!-- Added defer to script for performance improvement -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Script with defer for performance improvement -->
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -52,7 +57,7 @@
     <main>
         <section id="home" class="home">
             <h2>Welcome to 'An Alternative Blog'</h2>
-            <p>A place where I share my thoughts on the world around us.</p>
+            <p>Sharing my thoughts on the world around us.</p>
         </section>
 
         <section id="about" class="about">
@@ -114,14 +119,14 @@
                 <div class="contact-method">
                     <i class="fas fa-envelope contact-icon" aria-hidden="true"></i>
                     <h3>Email</h3>
-                    <p>Send me a message directly to my inbox. I aim to respond within 48 hours.</p>
+                    <p>Messages to my inbox receive a response within 48 hours.</p>
                     <a href="mailto:charlie.mason@btinternet.com">charlie.mason@btinternet.com</a>
                 </div>
                 
                 <div class="contact-method">
                     <i class="fab fa-linkedin contact-icon" aria-hidden="true"></i>
                     <h3>LinkedIn</h3>
-                    <p>Connect with me professionally or send a message through LinkedIn.</p>
+                    <p>Connect with me professionally through LinkedIn.</p>
                     <a href="https://www.linkedin.com/in/charles-w-mason">linkedin.com/in/charles-w-mason</a>
                 </div>
             </div>
@@ -170,7 +175,7 @@
     </main>
 
     <footer>
-        <p>&copy; 2025 An Alternative Blog. All rights reserved.</p>
+        <p>&copy; <span id="current-year"></span> An Alternative Blog. All rights reserved.</p>
         <a href="#terms" data-section="terms" class="terms-link">Terms of Service</a>
     </footer>
 </body>
