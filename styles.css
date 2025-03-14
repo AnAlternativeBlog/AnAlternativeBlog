@@ -197,18 +197,15 @@ nav ul li a {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  /* Optimized transitions for better performance */
+  /* Optimized transitions for better performance - color changes only */
   transition: color var(--transition-speed), background-color var(--transition-speed);
-  /* Force GPU acceleration for better performance */
-  transform: translateZ(0);
 }
 
 nav ul li a:hover, 
 nav ul li a:focus {
   color: #222;
   background-color: var(--accent-color);
-  /* Keep the visual appearance with optimized transform */
-  transform: translateZ(0) translateY(-2px);
+  /* Removed transform to prevent layout recalculations */
 }
 
 /* Home Section */
@@ -588,7 +585,6 @@ footer p {
   border-radius: var(--border-radius);
   display: inline-block;
   transition: background-color var(--transition-speed), 
-              transform var(--transition-speed), 
               color var(--transition-speed);
   font-weight: 500;
   letter-spacing: 0.01em;
@@ -597,7 +593,6 @@ footer p {
 .terms-link:hover,
 .terms-link:focus {
   background-color: var(--accent-color);
-  transform: translateY(-2px);
   color: #222;
   border-color: transparent;
 }
