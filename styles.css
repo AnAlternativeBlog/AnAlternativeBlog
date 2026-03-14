@@ -420,43 +420,6 @@ main {
   border-radius: var(--radius);
 }
 
-.support-label {
-  font-weight: 600;
-  font-size: 1rem;
-  margin-bottom: 1.25rem;
-}
-
-.coffee-tiers {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-}
-
-.coffee-btn {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.75rem 1.25rem;
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius);
-  color: var(--color-text);
-  font-weight: 500;
-  transition: border-color var(--transition), background var(--transition), color var(--transition);
-  min-width: 100px;
-  text-align: center;
-  gap: 0.15rem;
-}
-
-.coffee-btn:hover {
-  border-color: var(--color-accent);
-  background: var(--color-accent);
-  color: #fff;
-}
-
-.coffee-count { font-size: 0.85rem; }
-.coffee-price { font-size: 1.25rem; font-weight: 600; }
-
 .support-custom {
   font-size: 0.9rem;
   font-weight: 500;
@@ -595,9 +558,6 @@ footer {
     flex-direction: column;
     align-items: flex-start;
   }
-
-  .coffee-tiers { gap: 0.5rem; }
-  .coffee-btn { min-width: 80px; padding: 0.6rem 1rem; }
 
   .footer-inner {
     flex-direction: column;
