@@ -11,9 +11,10 @@
   --color-surface:  #f7f7f5;
   --color-text:     #1a1a1a;
   --color-muted:    #6b6b6b;
-  --color-accent:   #2563eb;
-  --color-accent-h: #1d4ed8;
-  --color-border:   #e5e5e5;
+  --color-accent:      #2563eb;
+  --color-accent-h:    #1d4ed8;
+  --color-accent-glow: rgba(37, 99, 235, 0.1);
+  --color-border:      #e5e5e5;
 
   --width-content: 680px;
   --width-wide:    1000px;
@@ -264,7 +265,7 @@ main {
 }
 
 .post-excerpt {
-  font-size: 0.975rem;
+  font-size: 0.95rem;
   color: var(--color-muted);
   line-height: 1.7;
   margin-bottom: 1rem;
@@ -406,7 +407,7 @@ main {
 
 /* ---- Effective date ---- */
 .effective-date {
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   color: var(--color-muted);
   margin-bottom: 2rem;
 }
@@ -473,14 +474,14 @@ main {
 
 .contact-card:hover {
   border-color: var(--color-accent);
-  box-shadow: 0 2px 12px rgba(37, 99, 235, 0.1);
+  box-shadow: 0 2px 12px var(--color-accent-glow);
 }
 
 .contact-card-label {
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   color: var(--color-muted);
 }
 
