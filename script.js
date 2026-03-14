@@ -19,7 +19,7 @@
     return document.querySelectorAll('main > section');
   }
 
-  function showSection(id) {
+  function showSection(id, pushHistory) {
     const target = document.getElementById(id);
     if (!target) return;
 
@@ -31,7 +31,7 @@
     window.scrollTo(0, 0);
     document.title = pageTitles[id] || 'An Alternative Blog';
     updateNavState(id);
-    updateHash(id);
+    if (pushHistory !== false) updateHash(id);
   }
 
   function updateHash(id) {
@@ -80,7 +80,17 @@
       return;
     }
 
-    // Share link (let it pass through naturally — it uses onclick)
+    // Share on LinkedIn
+    const shareBtn = e.target.closest('.share-link');
+    if (shareBtn) {
+      window.open(
+        'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(window.location.href),
+        'linkedin-share',
+        'width=580,height=520'
+      );
+      return;
+    }
+
     // Footer terms link (handled by data-section above)
   });
 
@@ -125,7 +135,7 @@
     const ids = Array.from(sections).map(function (s) { return s.id; });
 
     if (hash && ids.includes(hash)) {
-      showSection(hash);
+      showSection(hash, false);
     } else {
       // Default: show home, hide everything else
       sections.forEach(function (s) {
